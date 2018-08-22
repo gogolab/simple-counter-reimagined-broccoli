@@ -11,25 +11,30 @@ function view(dispatch, model) {
         button(
             {
                 className: "pv1, ph2, mr2",
-                onclick: () => dispatch("plus")
+                onclick: () => dispatch(MSGS.ADD)
             },
             "+"
         ),
         button(
             {
                 className: "pv1, ph2",
-                onclick: () => dispatch("minus")
+                onclick: () => dispatch(MSGS.SUBTRACT)
             },
             "-"
         )
     ]);
 }
 
+const MSGS = {
+    ADD: "ADD",
+    SUBTRACT: "SUBTRACT"
+};
+
 function update(msg, model) {
     switch (msg) {
-        case "plus":
+        case MSGS.ADD:
             return model + 1;
-        case "minus":
+        case MSGS.SUBTRACT:
             return model - 1;
         default:
             return model;
