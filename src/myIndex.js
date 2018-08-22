@@ -7,21 +7,21 @@ const initModel = 0;
 
 function view(dispatch, model) {
     return div([
-        div({ className: "mv2" }, `Count: ${model}`),
-        button(
-            {
-                className: "pv1, ph2, mr2",
-                onclick: () => dispatch("plus")
-            },
-            "+"
-        ),
-        button(
-            {
-                className: "pv1, ph2",
-                onclick: () => dispatch("minus")
-            },
-            "-"
-        )
+        div(`Counter: ${model}`),
+        div([
+            button(
+                {
+                    onclick: () => dispatch("plus")
+                },
+                "+"
+            ),
+            button(
+                {
+                    onclick: () => dispatch("minus")
+                },
+                "-"
+            )
+        ])
     ]);
 }
 
@@ -36,7 +36,7 @@ function update(msg, model) {
     }
 }
 
-//Impure code below
+// Impure code below:
 
 function app(initModel, view, update, node) {
     let model = initModel;
@@ -52,6 +52,6 @@ function app(initModel, view, update, node) {
 }
 
 const rootNode = document.getElementById("app");
-
 // rootNode.appendChild(view(update("minus", initModel)));
+
 app(initModel, view, update, rootNode);
